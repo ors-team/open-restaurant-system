@@ -1,15 +1,16 @@
 import { Center, Container, Text, Title } from '@mantine/core';
 import type { NextPage } from 'next'
 import { ActionsGrid } from '../components/actionsGrid';
-import { IconNote, IconPencil } from "@tabler/icons"
+import { IconBox, IconNote, IconPencil, IconSettings, IconToolsKitchen2 } from "@tabler/icons"
+import { ActionsContainer } from '../components/actionsContainer';
 
 const Home: NextPage = () => {
-  return (<Center sx={{ width: '100vw', height: '90vh' }}>
-    <ActionsGrid title='ors.Menu' data={[
-      { title: 'Place Orders', color: 'blue', icon: IconPencil, href: '/orders/in' },
-      { title: 'Receive Orders', color: 'indigo', icon: IconNote, href: '/orders/in' }
-    ]} />
-  </Center>)
+  return (<ActionsContainer title='open-restaurant-system'><ActionsGrid data={[
+    { title: 'Orders', color: 'blue', icon: IconPencil, href: '/orders' },
+    { title: 'Menu', color: 'orange', icon: IconToolsKitchen2, href: '/menu' },
+    { title: 'Inventory', color: 'red', icon: IconBox, href: '/inventory' },
+    { title: 'Settings', color: 'pink', icon: IconSettings, href: '/settings' },
+  ]} /></ActionsContainer>)
 }
 
 export default Home;

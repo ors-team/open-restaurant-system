@@ -15,9 +15,7 @@ const Clock = ({ }: {}) => {
         }, 250)
     }, [])
 
-    return (<Group p='sm' position='right' sx={{ display: 'fixed', top: 0, right: 0 }}>
-        <Code sx={{ fontSize: '1.2rem', userSelect: 'none' }}>{renderTime(date[0])}</Code>
-    </Group>)
+    return (<Code sx={{ fontSize: '2rem' }}>{renderTime(date[0])}</Code>)
 }
 
 export default Clock
