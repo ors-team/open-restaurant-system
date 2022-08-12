@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Code, Group, MantineProvider, Text } from '@mantine/core'
+import { Group, MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications'
 import { useLocalStorage } from '@mantine/hooks'
 import Head from 'next/head'
