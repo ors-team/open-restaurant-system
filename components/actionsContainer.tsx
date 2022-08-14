@@ -1,4 +1,5 @@
 import { createStyles, Card, Group, Text } from '@mantine/core';
+import { ReactNode } from 'react';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -9,13 +10,14 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export function ActionsContainer({ children, title }: { children: any, title?: string }) {
+export function ActionsContainer({ children, title, icon }: { children: any, title?: string, icon?: ReactNode }) {
     const { classes } = useStyles();
 
     return (
         <Card sx={{ transform: 'scale(1.5)' }} withBorder radius="md" className={classes.card}>
-            {title ? <Group mb='sm' position="apart">
-                <Text className={classes.title}>{title}</Text>
+            {title || icon ? <Group spacing={6} mb='sm' position="left">
+                {icon}
+                {title ? <Text className={classes.title}>{title}</Text> : <></>}
             </Group> : <></>}
             {children}
         </Card>
