@@ -5,12 +5,14 @@ import { IconBox, IconHome, IconNote, IconPencil, IconSettings, IconToolsKitchen
 import { ActionsContainer } from '../components/actionsContainer';
 
 const Home: NextPage = () => {
-  return (<ActionsContainer icon={<IconHome />} title='open-restaurant-system'><ActionsGrid data={[
-    { title: 'Orders', color: 'blue', icon: IconPencil, href: '/orders' },
-    { title: 'Menu', color: 'orange', icon: IconToolsKitchen2, href: '/menu' },
-    { title: 'Inventory', color: 'red', icon: IconBox, href: '/inventory' },
-    { title: 'Settings', color: 'pink', icon: IconSettings, href: '/settings' },
-  ]} /></ActionsContainer>)
+  return (<Center sx={{ height: '100%' }}>
+    <ActionsContainer icon={<IconHome />} title='open-restaurant-system'><ActionsGrid data={[
+      { title: 'Orders', color: 'blue', icon: IconPencil, href: '/orders' },
+      { title: 'Menu', color: 'orange', icon: IconToolsKitchen2, href: '/menu' },
+      { title: 'Inventory', color: 'red', icon: IconBox, href: '/inventory' },
+      { title: 'Settings', color: 'pink', icon: IconSettings, href: '/settings' },
+    ]} /></ActionsContainer>
+  </Center>)
 }
 
 export default Home;

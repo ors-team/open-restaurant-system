@@ -9,19 +9,14 @@ import { IconArrowBackUp } from '@tabler/icons';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { apiCall } from '../components/api';
+import SetupScreen from '../components/setup';
 
 const Clock = dynamic(() => import('../components/clock'), { ssr: false })
-
-const Back = () => {
-  const router = useRouter()
-  return (<>{router.pathname !== '/' ? <ActionIcon size='xl' onClick={() => router.push('../')} variant='filled'>
-    <IconArrowBackUp size={30} />
-  </ActionIcon> : <div />}</>)
-}
 
 function MyApp({ Component, pageProps }: AppProps) {
   const deviceIdentifier = useLocalStorage({ key: 'device-identifier', defaultValue: (new Date()).getTime() })
   const [envInfo, setEnvInfo] = useState<any>({})
+  const router = useRouter()
 
   useEffect(() => {
     apiCall("GET", "/api/env").then(resp => {
@@ -37,24 +32,23 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (<MantineProvider theme={{
     colorScheme: 'dark',
     fontFamily: 'Poppins',
-  }}>
+    cursorType: 'pointer',
+    fontSizes: {
+      'xs': 24,
+      'sm': 26,
+      'md': 28,
+      'lg': 30,
+      'xl': 32
+    },
+  }}
+    withGlobalStyles withNormalizeCSS>
     <Head>
       <title>Open Restaurant System</title>
     </Head>
-    <Modal withCloseButton={false} size="xl" title={<Text size="xl">Missing environment variables!</Text>} opened={!envInfo.success} onClose={() => { }}>
-      <Text mb={6}>Please ask the administrator to configure the following envvars:</Text>
-      <Text>{envInfo.missing?.join(", ")}</Text>
-    </Modal>
     <NotificationsProvider>
-      <Group p='sm' position='apart' sx={{ display: 'fixed', top: 0, left: 0, height: '7vh', width: '100vw', zIndex: 99 }} >
-        <Back />
-        <Clock />
-      </Group>
-      <Group sx={{ position: 'fixed', top: '12vh', height: '76vh', width: '100vw', zIndex: 1 }}>
-        <Center sx={{ width: '100vw', height: '100%' }}>
-          <Component {...pageProps} />
-        </Center>
-      </Group>
+      <div style={{ height: '100vh', width: '100vw' }}>
+        {envInfo.success ? <Component {...pageProps} /> : <SetupScreen />}
+      </div>
     </NotificationsProvider>
   </MantineProvider>)
 }

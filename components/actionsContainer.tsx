@@ -14,7 +14,7 @@ export function ActionsContainer({ children, title, icon }: { children: any, tit
     const { classes } = useStyles();
 
     return (
-        <Card sx={{ transform: 'scale(1.5)' }} withBorder radius="md" className={classes.card}>
+        <Card withBorder radius="md" className={classes.card}>
             {title || icon ? <Group spacing={6} mb='sm' position="left">
                 {icon}
                 {title ? <Text className={classes.title}>{title}</Text> : <></>}
