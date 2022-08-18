@@ -6,7 +6,7 @@ import { ActionsContainer } from '../components/actionsContainer';
 
 const Home: NextPage = () => {
   return (<Center sx={{ height: '100%' }}>
-    <ActionsContainer icon={<IconHome />} title='open-restaurant-system'><ActionsGrid data={[
+    <ActionsContainer icon={<IconHome size={30} />} title='open-restaurant-system'><ActionsGrid data={[
       { title: 'Orders', color: 'blue', icon: IconPencil, href: '/orders' },
       { title: 'Menu', color: 'orange', icon: IconToolsKitchen2, href: '/menu' },
       { title: 'Inventory', color: 'red', icon: IconBox, href: '/inventory' },

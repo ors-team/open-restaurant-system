@@ -6,7 +6,7 @@ const renderTime = (date: Date) => {
     return dateArr.map(d => d.toString().padStart(2, '0')).join(':')
 }
 
-const Clock = ({ }: {}) => {
+const Clock = () => {
     const date = useState(new Date())
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Clock = ({ }: {}) => {
         }, 250)
     }, [])
 
-    return (<Code sx={{ fontSize: '2rem' }}>{renderTime(date[0])}</Code>)
+    return (<Code sx={{ fontSize: 26 }}>{renderTime(date[0])}</Code>)
 }
 
 export default Clock
